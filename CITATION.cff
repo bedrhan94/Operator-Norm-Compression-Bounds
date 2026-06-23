@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this code or its findings, please cite it as below."
+title: "Operator-Norm Error Propagation for Factor-Quantized Low-Rank Neural Networks: Valid but Compositionally-Loose Certificates and Task-Dependent Sensitivity Surrogates"
+abstract: >-
+  Empirical validation of a deterministic operator-norm bound on the output error of
+  neural networks compressed by per-layer truncated-SVD plus factor-wise uniform
+  quantization. The bound is valid but very loose (compositional looseness); its
+  induced per-layer sensitivity surrogate S_i is shown to be a poor allocation signal
+  (a flat-weighted knapsack with no S_i already recovers strong allocations) and its
+  layer ranking is task-dependent (positive on CIFAR-10, negative on SVHN).
+authors:
+  - family-names: "bedrhan94"
+    email: "bedrhan94@gmail.com"
+keywords:
+  - neural network compression
+  - low-rank factorization
+  - quantization
+  - operator norm
+  - Lipschitz bounds
+  - mixed-precision allocation
+license: MIT
+date-released: "2026-06-23"
+version: "1.0.0"

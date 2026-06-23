@@ -1,0 +1,34 @@
+# Spectral-normalized (Lipschitz-constrained) VGG variant -- tighter-bound regime.
+# BatchNorm disabled on purpose: folding BN would re-introduce per-channel scaling and undo
+# the spectral-norm constraint, so the folded ||W_i||_2 stays ~1 and Gamma_i does not blow up.
+seed: 0
+device: null
+
+model:
+  arch: full
+  spectral_norm: true
+  batchnorm: false
+
+train:
+  epochs: 120
+  patience: 18
+  min_delta: 0.0001
+  lr: 0.02            # lower LR: no BN to stabilise, spectral norm caps gradients
+  momentum: 0.9
+  weight_decay: 0.0005
+  batch_size: 128
+  num_workers: 2
+
+data:
+  root: ./data
+  synthetic: false
+  download: true
+
+power_iter:
+  iters: 200
+  tol: 1.0e-7
+
+calibration_size: 512
+eval_size: 256
+percentile: 99.9
+checkpoint: checkpoints/vgg_sn.pt

@@ -1,0 +1,4 @@
+rank_frac,bits,total_violations,max_layer_violrate,median_tightness
+0.5,4,0,0.0,0.1292537897825241
+0.25,3,0,0.0,0.13651365041732788
+1.0,2,0,0.0,0.13061867654323578

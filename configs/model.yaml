@@ -1,0 +1,33 @@
+# Baseline model + training. Used by experiments/train.py and as the default for A/B/C.
+seed: 0
+device: null            # null => auto (CUDA if available, else CPU)
+
+model:
+  arch: full            # "full" (VGG-style, ~90%+ target) or "tiny" (smoke/CPU)
+  # Optional overrides (otherwise VGGConfig defaults are used):
+  # conv_stages: [[64, false], [64, true], [128, false], [128, true], [256, false], [256, true]]
+  # fc_dims: [256]
+
+train:
+  epochs: 120
+  patience: 18          # early stop if test acc does not improve for this many epochs
+  min_delta: 0.0001
+  lr: 0.05
+  momentum: 0.9
+  weight_decay: 0.0005
+  batch_size: 128
+  num_workers: 2
+
+data:
+  root: ./data
+  synthetic: false
+  download: true
+
+power_iter:
+  iters: 200            # enough for accurate operator norms (power iteration converges from below)
+  tol: 1.0e-7
+
+calibration_size: 512   # |C| for H_{i-1} = max_{x in C} ||h_hat_{i-1}(x)||
+eval_size: 256          # test subset for measuring ||z - z_hat||
+percentile: 99.9        # high-percentile H variant
+checkpoint: checkpoints/vgg_cifar10.pt

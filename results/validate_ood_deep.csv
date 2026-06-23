@@ -1,0 +1,5 @@
+ood,viol_exactH,viol_cleanH,Hmax_ratio_to_clean
+clean,0.0,0.0,1.0
+gaussian_noise,0.0,0.0,0.814919538536572
+scaled_x2,0.0,0.0,2.0
+fgsm_adv,0.0,0.0,1.000064360403381

@@ -1,0 +1,46 @@
+# --- large / regenerable artifacts (not committed) ---
+# CIFAR-10 / SVHN downloads (~600 MB), fetched by torchvision
+data/
+# trained model weights (~130 MB); regenerate with experiments/train.py
+checkpoints/
+
+# --- python caches ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# --- environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- scratch / logs / one-off patch scripts ---
+*.log
+_patch*.py
+_pp*.py
+_rpatch.py
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# --- temp configs generated during runs ---
+configs/_*.yaml
+
+# Manuscript / reviewer files
+paper/
+*.docx
+*.doc
+*review*
+*Reviewer*
+*response*
+*hakem*
+*revision*
+*.pdf

@@ -1,0 +1,16 @@
+# Experiment A -- bound validity. Inherits model/data defaults; override as needed.
+seed: 0
+checkpoint: checkpoints/vgg_cifar10.pt
+calibration_size: 512
+eval_size: 256
+percentile: 99.9
+power_iter:
+  iters: 200
+  tol: 1.0e-7
+
+experiment_a:
+  n_configs: 40
+  uniform_fraction: 0.5          # half uniform (k,b), half random per-layer
+  b_choices: [2, 3, 4, 5, 6, 8]
+  rank_fracs: [0.1, 0.25, 0.5, 0.75, 1.0]
+  mode: op_decomposed            # rigorous operator-norm Theorem-2 form

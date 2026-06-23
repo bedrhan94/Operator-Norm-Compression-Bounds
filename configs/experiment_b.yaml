@@ -1,0 +1,14 @@
+# Experiment B -- per-layer sensitivity ranking correlation.
+seed: 0
+checkpoint: checkpoints/vgg_cifar10.pt
+calibration_size: 512
+eval_size: 256
+percentile: 99.9
+power_iter:
+  iters: 200
+  tol: 1.0e-7
+
+experiment_b:
+  rank_frac: 0.5        # moderate single-layer truncation
+  bits: 4               # moderate single-layer bit-width
+  aggregate: mean       # "mean" or "max" of the per-sample logit-error increase

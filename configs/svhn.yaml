@@ -1,0 +1,40 @@
+# Generality check: deep VGG-16 on SVHN (32x32x3, 10 classes). One file for train + A/B.
+#   python experiments/train.py        --config configs/svhn.yaml
+#   python experiments/experiment_a.py --config configs/svhn.yaml
+#   python experiments/experiment_b.py --config configs/svhn.yaml --robust
+seed: 0
+device: null
+model:
+  arch: deep
+data:
+  root: ./data
+  dataset: svhn
+  download: true
+train:
+  epochs: 60
+  patience: 12
+  min_delta: 0.0001
+  lr: 0.05
+  momentum: 0.9
+  weight_decay: 0.0005
+  batch_size: 128
+  num_workers: 2
+power_iter:
+  iters: 200
+  tol: 1.0e-7
+calibration_size: 512
+eval_size: 256
+percentile: 99.9
+checkpoint: checkpoints/vgg_deep_svhn.pt
+output_suffix: _deep_svhn
+
+experiment_a:
+  n_configs: 40
+  uniform_fraction: 0.5
+  b_choices: [2, 3, 4, 5, 6, 8]
+  rank_fracs: [0.1, 0.25, 0.5, 0.75, 1.0]
+  mode: op_decomposed
+experiment_b:
+  rank_frac: 0.5
+  bits: 4
+  aggregate: mean

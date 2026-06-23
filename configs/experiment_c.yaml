@@ -1,0 +1,17 @@
+# Experiment C -- budget-constrained (k_i, b_i) allocation vs uniform baseline.
+seed: 0
+checkpoint: checkpoints/vgg_cifar10.pt
+calibration_size: 512
+eval_size: 256
+percentile: 99.9
+power_iter:
+  iters: 200
+  tol: 1.0e-7
+
+experiment_c:
+  rank_fracs: [0.1, 0.2, 0.35, 0.5, 0.7, 1.0]
+  b_choices: [2, 3, 4, 6, 8]
+  n_budgets: 8              # number of budget points B swept between min/max uniform cost
+  accuracy_size: 2000       # test images used for accuracy eval per allocation (speed)
+  b_act: 8                  # activation bit-width for the BOP proxy
+  mode: op_decomposed
