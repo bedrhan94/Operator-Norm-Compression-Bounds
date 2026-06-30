@@ -1,4 +1,4 @@
-"""Publication-ready matplotlib figures (saved as PDF to figures/).
+"""Publication-ready matplotlib figures (saved as PNG to figures/).
 
 One function per experiment figure described in the spec (sec.3). All use the Agg
 backend so they render headless.

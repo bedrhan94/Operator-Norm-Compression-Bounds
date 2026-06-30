@@ -13,7 +13,7 @@ quantization**, and of the practical claims built on it. The math is fixed and p
 numerically tests it. Every computed quantity maps to a stated result and the implementing function
 cites it (`# Theorem 1`, `# Lemma 2`, `# Eckart-Young`).
 
-📄 **Paper:** [`paper/Bound_Validation.docx`](paper/Bound_Validation.docx) · 📊 **Results:** [`results/RESULTS.md`](results/RESULTS.md)
+📊 **Results:** [`results/RESULTS.md`](results/RESULTS.md)
 
 ## TL;DR — three honest findings
 
@@ -69,7 +69,7 @@ python experiments/train.py --config configs/model_sn.yaml       # spectral-norm
 python experiments/train.py --config configs/model_deep.yaml     # deep VGG-16 (CIFAR-10, ~93.3%)
 python experiments/train.py --config configs/svhn.yaml           # deep VGG-16 (SVHN, ~95.9%)
 
-# Experiments (each writes results/*.csv and figures/*.pdf; variants use --sn / --deep / --config)
+# Experiments (each writes results/*.csv and figures/*.png; variants use --sn / --deep / --config)
 python experiments/experiment_a.py --config configs/experiment_a.yaml          # A: bound validity
 python experiments/experiment_b.py --config configs/experiment_b.yaml --deep --robust  # B: ranking
 python experiments/experiment_c.py --config configs/experiment_c.yaml --deep          # C: allocation
@@ -78,9 +78,6 @@ python experiments/experiment_c.py --config configs/experiment_c.yaml --deep    
 python experiments/validate.py            --deep   # Lemma 1, tightness regime, OOD/FGSM
 python experiments/seed_robustness.py              # ranking sign across 3 retrainings/dataset
 python experiments/allocator_procedure.py --deep   # flat / rank / log-S_i allocator control
-
-# Regenerate the paper
-python paper/make_figures.py && python paper/make_paper.py   # needs python-docx
 ```
 
 A/B test error propagation and run without a checkpoint; **C's accuracy requires a trained checkpoint**.
@@ -115,7 +112,7 @@ src/          models, spectral, compress, bounds, data, utils, viz   (the librar
 experiments/  train.py, experiment_a/b/c.py, validate.py, seed_robustness.py, allocator_procedure.py
 configs/      model*.yaml, experiment_*.yaml, svhn.yaml
 tests/        test_spectral.py, test_compress.py, test_bounds.py   (12 passing)
-results/      *.csv + RESULTS.md          figures/  *.pdf          paper/  make_*.py, .docx
+results/      *.csv + RESULTS.md          figures/  *.png   (generated, git-ignored)
 ```
 Model checkpoints (`checkpoints/`) and dataset downloads (`data/`) are git-ignored; regenerate them with
 `experiments/train.py`.

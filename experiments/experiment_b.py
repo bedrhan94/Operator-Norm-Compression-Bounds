@@ -116,7 +116,7 @@ def run(cfg: Dict, smoke: bool, robust: bool = False) -> None:
     sfx = variant_suffix(cfg)
     csv_path = write_csv(results_dir() / f"experiment_b{sfx}.csv", rows)
     labels = [f"L{r['layer']}({r['kind'][0]})" for r in rows]
-    fig_path = scatter_sensitivity(S, emp, figures_dir() / f"experiment_b_ranking{sfx}.pdf",
+    fig_path = scatter_sensitivity(S, emp, figures_dir() / f"experiment_b_ranking{sfx}.png",
                                    labels=labels, spearman=float(rho_s), kendall=float(tau))
 
     print(f"[B] PRIMARY  corr(S_i, error):  Spearman rho={rho_s:.4f} (p={p_s:.3g})   "

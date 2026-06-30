@@ -3,6 +3,8 @@
 data/
 # trained model weights (~130 MB); regenerate with experiments/train.py
 checkpoints/
+# generated figure plots; regenerate by running experiments/*.py
+figures/
 
 # --- python caches ---
 __pycache__/

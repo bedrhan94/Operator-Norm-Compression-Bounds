@@ -26,7 +26,7 @@ GPU: RTX 5060 Ti. CSVs/PDFs in `results/` and `figures/`; variants use suffixed 
 (Headline rows are the shallow BN net; the spectral-norm twin and the deep VGG-16 are in the two
 sections below.)
 
-## A — bound validity (`experiment_a.csv`, `figures/experiment_a_validity.pdf`)
+## A — bound validity (`experiment_a.csv`, `figures/experiment_a_validity.png`)
 
 - **Exact-H violation rate = 0.0000** over 40 (uniform + random per-layer) configs. The bound is
   never violated — success criterion #1 holds, including on six stacked 3×3 convs at real
@@ -37,7 +37,7 @@ sections below.)
   (the under-estimate of H is dwarfed by the looseness). The exact-vs-empirical-H violation split
   is reported (all 0) per spec.
 
-## B — ranking correlation (`experiment_b.csv`, `figures/experiment_b_ranking.pdf`)
+## B — ranking correlation (`experiment_b.csv`, `figures/experiment_b_ranking.png`)
 
 Compress one layer at a time (k = 0.5·rank, b = 4), correlate the logit-error increase with `S_i`.
 
@@ -53,7 +53,7 @@ by up to 6 orders of magnitude, while the *measured* per-layer sensitivity is fl
 is in fact **largest for the final classifier** (smallest `S_i`, since it perturbs logits directly with
 no downstream gain). This is the textbook looseness of spectral-norm-product Lipschitz bounds.
 
-## C — budget allocation (`experiment_c.csv`, `figures/experiment_c_*.pdf`)
+## C — budget allocation (`experiment_c.csv`, `figures/experiment_c_*.png`)
 
 Lagrangian-relaxation allocation of `(k_i,b_i)` minimizing `Σ_i S_i(σ_{k+1,i}+η^fac_i)` under the
 memory budget `C_i=b_i k_i(m_i+n_i+1)`, vs the best uniform `(k,b)` at the same budget. **The
@@ -85,7 +85,7 @@ objective uses the measured `η^fac`** (spec §1; the closed-form is only its up
   `S_i` collapses and only the bound-free empirical allocation holds — i.e. the surrogate's allocation
   value does not survive depth.
 
-## Spectral-normalized variant — the tighter-bound regime (`*_sn.csv`, `figures/*_sn.pdf`)
+## Spectral-normalized variant — the tighter-bound regime (`*_sn.csv`, `figures/*_sn.png`)
 
 To test the open question directly, we trained a **Lipschitz-constrained** twin: the same VGG
 with `spectral_norm` on every conv/linear and **no BatchNorm** (BN folding would re-introduce
@@ -122,7 +122,7 @@ vs up to **35** in the BN net, so `Γ_0 ≈ 25` instead of **214,369**.
 control. The shallow ranking/allocation numbers are *not* general — see the Depth and Generality
 sections for where the surrogate claims break.
 
-## Depth study — VGG-16, 13 conv layers (`*_deep.csv`, `figures/*_deep.pdf`)
+## Depth study — VGG-16, 13 conv layers (`*_deep.csv`, `figures/*_deep.png`)
 
 The shallow nets only give 6–8 layers, too few for the rank test (#2) to reach significance.
 We therefore trained a **deep BN VGG-16** (13 conv + 2 FC, no skips; test acc **93.25%**) to give

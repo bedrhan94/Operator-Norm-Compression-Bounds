@@ -117,7 +117,7 @@ def run(cfg: Dict, smoke: bool) -> None:
     csv_path = write_csv(results_dir() / f"experiment_a{sfx}.csv", rows)
     overall_viol_exact = float(np.mean([r["violrate_exactH"] for r in rows]))
     fig_path = scatter_measured_vs_predicted(
-        max_errs, bounds_exact, figures_dir() / f"experiment_a_validity{sfx}.pdf",
+        max_errs, bounds_exact, figures_dir() / f"experiment_a_validity{sfx}.png",
         violation_rate=overall_viol_exact)
 
     print(f"[A] configs={len(configs)}  exact-H configs with any violation={viol_exact}  "

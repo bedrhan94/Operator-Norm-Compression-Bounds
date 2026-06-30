@@ -230,9 +230,9 @@ def run(cfg: Dict, smoke: bool) -> None:
                   ("$S_i$-guided (bound)", err_g, "^-", "tab:green"),
                   ("uniform", err_u, "s--", "tab:gray")]
     fig_acc = pareto_budget_multi(used_budgets, acc_series,
-                                  figures_dir() / f"experiment_c_accuracy{sfx}.pdf", ylabel="Test accuracy")
+                                  figures_dir() / f"experiment_c_accuracy{sfx}.png", ylabel="Test accuracy")
     fig_err = pareto_budget_multi(used_budgets, err_series,
-                                  figures_dir() / f"experiment_c_logiterror{sfx}.pdf",
+                                  figures_dir() / f"experiment_c_logiterror{sfx}.png",
                                   ylabel="Mean logit error $\\|z-\\hat z\\|_2$", lower_is_better=True)
 
     if rows:
